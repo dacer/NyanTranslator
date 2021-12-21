@@ -27,7 +27,7 @@ function App() {
       <br/>
       <textarea 
         id="nyan-area" 
-        placeholder="nyan nyan"
+        placeholder="Nyan Nyan"
         value={nyan}
         spellCheck="false"
         onChange={handleNyanAreaChange} />

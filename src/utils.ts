@@ -5,9 +5,9 @@ export function translateToNyan(str = '') {
     const texts = unicodeNumArray.map(unicodeNum => {
         return Array.from(unicodeNum).map(s => {
             if (s !== '0') {
-                return 'ny' + String.fromCharCode(parseInt('0430', 16)) + String.fromCharCode(parseInt('030' + s, 16)) + 'n'
+                return 'Ny' + String.fromCharCode(parseInt('0430', 16)) + String.fromCharCode(parseInt('030' + s, 16)) + 'n'
             } else {
-                return 'nyan'
+                return 'Nyan'
             }
         }).join('')
     })
@@ -18,11 +18,11 @@ export function translateToNyan(str = '') {
 export function translateFromNyan(str = '') {
     const strArray = str.split(' ')
     const result = strArray.map(i => {
-        const r = i.match(/ny..n|nyan/g)
+        const r = i.match(/Ny..n|Nyan/g)
         console.log(r);
         if (r && r.length) {
             return r.map(t => {
-                if (t === 'nyan') {
+                if (t === 'Nyan') {
                     return '0'
                 } else {
                     const hx16 = t.charCodeAt(3).toString(16)
