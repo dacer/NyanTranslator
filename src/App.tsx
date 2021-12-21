@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { translateFromNyan, translateToNyan } from './utils';
 
 function App() {
+  const [text, setText] = useState("");
+  const [nyan, setNyan] = useState("");
+
+  const handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
+    setNyan(translateToNyan(event.target.value));
+  }
+
+  const handleNyanAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNyan(event.target.value);
+    setText(translateFromNyan(event.target.value));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <textarea 
+        id="text-area" 
+        placeholder="Input something"
+        value={text}
+        spellCheck="false"
+        onChange={handleTextAreaChange} />
+      <br/>
+      <textarea 
+        id="nyan-area" 
+        placeholder="nyan nyan"
+        value={nyan}
+        spellCheck="false"
+        onChange={handleNyanAreaChange} />
     </div>
   );
 }
